@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>샬롬자유학교 AI 교육 운영계획(안)</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#667085;
+      --line:#e7ebf0;
+      --navy:#17385f;
+      --blue:#356fe5;
+      --blue-soft:#edf3ff;
+      --violet:#7057d9;
+      --violet-soft:#f2efff;
+      --green:#23855c;
+      --green-soft:#eef8f3;
+      --orange:#c46a1b;
+      --orange-soft:#fff4e9;
+      --shadow:0 10px 28px rgba(31,41,55,.06);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+      background:linear-gradient(180deg,#f7f9fc 0%,#f3f6fa 100%);
+      color:var(--text);
+      line-height:1.68;
+    }
+    a{color:inherit}
+    .wrap{max-width:1160px;margin:0 auto;padding:44px 24px 72px}
+    .hero{
+      padding:52px 48px;
+      border-radius:30px;
+      background:linear-gradient(135deg,#18385e 0%,#284f7d 100%);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+    .hero .kicker{font-size:14px;font-weight:800;letter-spacing:.12em;opacity:.78;margin-bottom:12px}
+    .hero h1{margin:0;font-size:38px;line-height:1.25;font-weight:850;letter-spacing:-.03em}
+    .hero .authors{margin-top:14px;font-size:16px;font-weight:700;opacity:.92}
+    .hero p{max-width:880px;margin:22px 0 0;color:rgba(255,255,255,.88);font-size:17px}
+    .hero strong{color:#fff}
+    .summary{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px
+    }
+    .summary div{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:16px;padding:15px 14px
+    }
+    .summary span{display:block;font-size:12px;opacity:.75;margin-bottom:4px}
+    .summary b{font-size:15px}
+    .section{margin-top:28px}
+    .section-title{
+      display:flex;align-items:center;gap:12px;margin-bottom:16px
+    }
+    .section-title .num{
+      width:38px;height:38px;border-radius:13px;background:var(--blue-soft);color:var(--blue);
+      display:flex;align-items:center;justify-content:center;font-weight:850;flex:0 0 auto
+    }
+    .section-title h2{margin:0;color:var(--navy);font-size:25px;letter-spacing:-.02em}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      padding:30px 32px;box-shadow:var(--shadow)
+    }
+    .intro{font-size:16px}
+    .intro strong{color:var(--navy)}
+    .meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .meta{
+      background:#fafbfc;border:1px solid var(--line);border-radius:16px;padding:17px 18px
+    }
+    .meta .label{font-size:12px;font-weight:800;color:#8490a0;margin-bottom:4px}
+    .meta .value{font-size:15px;font-weight:750;color:#27364a}
+    .tracks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+    .track{border-radius:18px;padding:22px;border:1px solid var(--line)}
+    .track.web{background:linear-gradient(180deg,#f8fbff 0%,#fff 100%)}
+    .track.ai{background:linear-gradient(180deg,#faf8ff 0%,#fff 100%)}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:10px}
+    .tag.web{background:var(--blue-soft);color:var(--blue)}
+    .tag.ai{background:var(--violet-soft);color:var(--violet)}
+    .track h3{margin:0 0 10px;font-size:20px;color:var(--navy)}
+    .track p{margin:7px 0;font-size:14px;color:#485568}
+    .track .result{
+      margin-top:13px;padding-top:13px;border-top:1px dashed var(--line);font-size:14px
+    }
+    .goals{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .goal{
+      display:flex;gap:14px;padding:18px;border:1px solid var(--line);border-radius:17px;background:#fff
+    }
+    .goal .gnum{
+      width:36px;height:36px;border-radius:11px;background:var(--green-soft);color:var(--green);
+      display:flex;align-items:center;justify-content:center;font-weight:850;flex:0 0 auto
+    }
+    .goal h4{margin:0 0 5px;font-size:16px;color:#27364a}
+    .goal p{margin:0;font-size:14px;color:var(--muted)}
+    .notice{
+      background:#fffaf2;border:1px solid #f2dfbe;border-radius:16px;padding:16px 18px;
+      font-size:14px;color:#6b5535;margin-bottom:18px
+    }
+    .timeline{display:grid;gap:16px}
+    .session{
+      background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px;
+      box-shadow:0 5px 18px rgba(31,41,55,.04)
+    }
+    .session-top{
+      display:grid;grid-template-columns:82px 1fr auto;gap:16px;align-items:start
+    }
+    .round{
+      width:72px;height:72px;border-radius:18px;background:var(--blue-soft);color:var(--blue);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:850;line-height:1.15
+    }
+    .round small{font-size:11px;margin-top:5px;opacity:.8}
+    .session.ai .round{background:var(--violet-soft);color:var(--violet)}
+    .session.ot .round{background:var(--orange-soft);color:var(--orange)}
+    .session h3{margin:1px 0 4px;font-size:20px;color:var(--navy)}
+    .session .date{font-size:13px;color:var(--muted);font-weight:650}
+    .type{
+      font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px;background:#f4f6f8;color:#596577
+    }
+    .session-body{
+      display:grid;grid-template-columns:1.7fr .8fr;gap:22px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)
+    }
+    .session ul{margin:0;padding-left:20px}
+    .session li{margin:6px 0;font-size:14px}
+    .outcome{
+      background:#f8fafc;border-radius:15px;padding:16px;border:1px solid #edf0f3
+    }
+    .outcome b{display:block;font-size:13px;color:#4d5a6b;margin-bottom:7px}
+    .outcome p{margin:0;font-size:14px;font-weight:750;color:#27364a}
+    .footer{text-align:center;color:#8a94a3;font-size:13px;margin-top:28px}
+    @media(max-width:900px){
+      .summary{grid-template-columns:repeat(2,1fr)}
+      .meta-grid{grid-template-columns:repeat(2,1fr)}
+      .tracks,.goals{grid-template-columns:1fr}
+      .session-body{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      .wrap{padding:22px 13px 44px}
+      .hero{padding:36px 23px;border-radius:22px}
+      .hero h1{font-size:29px}
+      .summary{grid-template-columns:1fr 1fr}
+      .meta-grid{grid-template-columns:1fr}
+      .card{padding:23px 20px}
+      .section-title h2{font-size:22px}
+      .session{padding:19px}
+      .session-top{grid-template-columns:64px 1fr}
+      .round{width:58px;height:58px;border-radius:15px}
+      .type{grid-column:2;justify-self:start}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="kicker">SHALOM FREE SCHOOL · AI EDUCATION PLAN</div>
+      <h1>샬롬자유학교<br>AI 교육 운영계획(안)</h1>
+      <div class="authors">김태양 · 박서현</div>
+      <p>
+        생성형 AI를 활용해 학생들이 <strong>자신의 아이디어를 실제 콘텐츠와 웹사이트로 구현</strong>해보는
+        프로젝트형 실습 교육입니다. AI를 정답을 대신 만들어주는 도구가 아니라,
+        <strong>자신의 생각을 구체화하고 표현하는 창작 도구</strong>로 경험하는 것을 목표로 합니다.
+      </p>
+      <div class="summary">
+        <div><span>대상</span><b>14~18세 중·고등학생</b></div>
+        <div><span>인원</span><b>과정별 7~10명</b></div>
+        <div><span>방식</span><b>실시간 비대면</b></div>
+        <div><span>회차</span><b>총 8회</b></div>
+        <div><span>시간</span><b>회차당 약 2시간</b></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><div class="num">1</div><h2>교육 개요</h2></div>
+      <div class="card intro">
+        <p>
+          샬롬자유학교 중·고등학생을 대상으로 생성형 AI를 활용하여
+          <strong>자신의 아이디어를 실제 콘텐츠와 웹사이트로 구현해보는 프로젝트형 실습 교육</strong>입니다.
+        </p>
+        <p>
+          AI의 기능이나 사용법을 단순히 익히는 데 그치지 않고, 학생들이 직접 아이디어를 기획하고
+          AI와 협업하여 하나의 결과물을 완성하는 경험을 제공합니다.
+        </p>
+        <p style="margin-bottom:0">
+          교육을 통해 학생들이 AI를 <strong>‘정답을 대신 만들어주는 도구’가 아닌
+          ‘생각을 구체화하고 표현하는 창작 도구’</strong>로 이해하고 활용할 수 있도록 하는 것이 주요 방향입니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><div class="num">2</div><h2>교육 대상 및 운영</h2></div>
+      <div class="card">
+        <div class="meta-grid">
+          <div class="meta"><div class="label">대상</div><div class="value">샬롬자유학교 중·고등학생 14~18세</div></div>
+          <div class="meta"><div class="label">인원</div><div class="value">과정별 최소 7명 ~ 최대 10명</div></div>
+          <div class="meta"><div class="label">교육 방식</div><div class="value">실시간 비대면 교육</div></div>
+          <div class="meta"><div class="label">교육 시간</div><div class="value">회차당 2시간 · 19:00~21:00</div></div>
+          <div class="meta"><div class="label">총 교육 기간</div><div class="value">8회</div></div>
+          <div class="meta"><div class="label">운영 방식</div><div class="value">설명보다 직접 제작·실습 중심</div></div>
+        </div>
+
+        <div class="tracks">
+          <div class="track web">
+            <span class="tag web">과정 1</span>
+            <h3>내가 직접 만드는 웹사이트</h3>
+            <p><strong>주요 내용</strong> · AI를 활용하여 아이디어를 실제 웹페이지로 구현하며 웹사이트 제작의 전 과정을 경험합니다.</p>
+            <div class="result"><strong>최종 결과물</strong><br>학생이 직접 주제를 선정하고 기획·제작한 뒤 실제 인터넷에서 접속할 수 있도록 배포한 개인 웹사이트 또는 간단한 웹서비스 1개</div>
+          </div>
+
+          <div class="track ai">
+            <span class="tag ai">과정 2</span>
+            <h3>내가 직접 만드는 AI 콘텐츠</h3>
+            <p><strong>주요 내용</strong> · AI를 활용하여 이미지, 영상, 음악 등 다양한 디지털 콘텐츠를 직접 기획하고 제작합니다.</p>
+            <div class="result"><strong>최종 결과물</strong><br>학생이 직접 주제와 콘셉트를 설정하고 이미지·영상·음악 생성 AI를 활용해 완성한 숏폼/AI 영상 콘텐츠 1편</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><div class="num">3</div><h2>교육 목표</h2></div>
+      <div class="goals">
+        <div class="goal">
+          <div class="gnum">1</div>
+          <div><h4>AI를 활용해 생각을 구체화하는 경험</h4><p>원하는 것을 설명하고 결과를 확인하며 지속적으로 수정하는 과정을 경험합니다.</p></div>
+        </div>
+        <div class="goal">
+          <div class="gnum">2</div>
+          <div><h4>아이디어를 실제 결과물로 구현하는 경험</h4><p>막연한 아이디어에서 출발해 기획, 제작, 수정, 완성까지의 전체 과정을 직접 경험합니다.</p></div>
+        </div>
+        <div class="goal">
+          <div class="gnum">3</div>
+          <div><h4>다양한 디지털 콘텐츠 제작 경험</h4><p>이미지, 영상, 음악, 웹페이지 등 여러 형태의 콘텐츠를 직접 제작합니다.</p></div>
+        </div>
+        <div class="goal">
+          <div class="gnum">4</div>
+          <div><h4>결과를 선택하고 판단하는 능력</h4><p>AI가 생성한 여러 결과를 비교하고 목적에 맞는 결과를 선택·수정하는 경험을 합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><div class="num">4</div><h2>전체 교육 일정</h2></div>
+
+      <div class="notice">
+        수업은 실시간 비대면으로 진행하며, 약 1시간 수업 후 5~10분의 쉬는 시간을 갖습니다.
+        각 회차는 <strong>직접 만들고 실행해보는 실습 중심 방식</strong>으로 진행합니다.
+      </div>
+
+      <div class="timeline">
+
+        <article class="session ot">
+          <div class="session-top">
+            <div class="round">1회<small>OT</small></div>
+            <div>
+              <h3>오리엔테이션</h3>
+              <div class="date">10월 7일(수) · 19:00~20:30</div>
+            </div>
+            <div class="type">공통 OT</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>강사 소개 및 전체 교육과정 안내</li>
+              <li>웹사이트 / AI 콘텐츠 과정 및 기대 결과물 소개</li>
+              <li>생성형 AI의 기본 개념과 최근 변화 이해</li>
+              <li>생성형 AI의 한계와 할루시네이션(Hallucination) 이해</li>
+              <li>프롬프트의 기본 원리 이해 및 간단한 실습</li>
+              <li>AI를 올바르게 활용하기 위한 수업 규칙 안내</li>
+              <li>개인 프로젝트를 위한 관심 주제 탐색 과제 안내</li>
+              <li><strong>추가 활용 도구:</strong> NotebookLM, Spark 등</li>
+            </ul>
+            <div class="outcome">
+              <b>수업 포인트</b>
+              <p>AI를 단순 사용법이 아니라 ‘생각을 표현하는 도구’로 이해하기</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="session">
+          <div class="session-top">
+            <div class="round">2회<small>WEB</small></div>
+            <div>
+              <h3>웹사이트가 만들어지는 원리 이해 + 첫 웹페이지 제작</h3>
+              <div class="date">10월 14일(수) · 19:00~21:00</div>
+            </div>
+            <div class="type">웹사이트</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>웹사이트의 기본 구조와 작동 방식 이해</li>
+              <li>HTML, CSS, JavaScript, Git, GitHub 등 기본 용어 이해</li>
+              <li>메뉴, 카드, 버튼 등 다양한 화면 요소 추가</li>
+              <li>AI에게 원하는 웹사이트를 설명하는 방법</li>
+              <li>AI를 활용한 간단한 정적 및 동적 웹페이지 제작</li>
+              <li>생성된 코드 확인 및 직접 수정해보기</li>
+              <li>GitHub를 활용한 코드 저장 및 웹페이지 배포 경험</li>
+            </ul>
+            <div class="outcome">
+              <b>결과물</b>
+              <p>첫 웹페이지 배포</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="session">
+          <div class="session-top">
+            <div class="round">3회<small>WEB</small></div>
+            <div>
+              <h3>AI와 대화하며 웹사이트 발전시키기</h3>
+              <div class="date">10월 28일(수) · 19:00~21:00</div>
+            </div>
+            <div class="type">웹사이트</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>디자인과 화면 구성을 프롬프트로 수정해보기</li>
+              <li>오류 발생 시 AI와 함께 문제를 해결하는 방법</li>
+              <li>GitHub를 활용한 수정 및 재배포</li>
+              <li><strong>과제:</strong> 나만의 웹사이트 주제와 필요한 기능 기획하기</li>
+            </ul>
+            <div class="outcome">
+              <b>과제</b>
+              <p>나만의 웹사이트 주제와 필요한 기능 기획</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="session">
+          <div class="session-top">
+            <div class="round">4회<small>WEB</small></div>
+            <div>
+              <h3>나만의 웹사이트 제작 + 데이터의 개념 이해</h3>
+              <div class="date">11월 4일(수) · 19:00~21:00</div>
+            </div>
+            <div class="type">웹사이트</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>개인별 웹사이트 기획안 공유 및 구체화</li>
+              <li>본인이 정한 주제로 웹사이트 제작 시작</li>
+              <li>정적 웹사이트와 동적 웹사이트의 차이 이해</li>
+              <li>서버·데이터베이스·배포의 전체 흐름 이해</li>
+              <li>Supabase를 활용한 데이터베이스 기본 개념 체험</li>
+              <li>웹사이트와 데이터 연결 실습</li>
+            </ul>
+            <div class="outcome">
+              <b>결과물</b>
+              <p>개인 웹사이트 1차 버전</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="session">
+          <div class="session-top">
+            <div class="round">5회<small>WEB</small></div>
+            <div>
+              <h3>나만의 웹사이트 완성 및 실제 배포</h3>
+              <div class="date">11월 11일(수) · 19:00~21:00</div>
+            </div>
+            <div class="type">웹사이트</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>개인 프로젝트 웹사이트 기능 및 디자인 보완</li>
+              <li>AI를 활용한 오류 수정과 완성도 높이기</li>
+              <li>데이터 입력·조회 등 간단한 기능 점검</li>
+              <li>GitHub / Supabase / Vercel의 역할과 연결 구조 정리</li>
+              <li>Vercel을 활용한 웹사이트 최종 배포</li>
+              <li>완성된 웹사이트 공유 및 간단한 피드백</li>
+            </ul>
+            <div class="outcome">
+              <b>최종 결과물</b>
+              <p>배포된 개인 웹사이트 1개</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="session ai">
+          <div class="session-top">
+            <div class="round">6회<small>AI</small></div>
+            <div>
+              <h3>AI로 아이디어를 이미지로 표현하기</h3>
+              <div class="date">11월 18일(수) · 19:00~21:00</div>
+            </div>
+            <div class="type">AI 콘텐츠</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>AI 콘텐츠가 만들어지는 전체 제작 과정 이해</li>
+              <li>콘텐츠의 목적·대상·콘셉트를 정하는 방법</li>
+              <li>이미지 생성 AI의 특징과 활용 방법</li>
+              <li>원하는 이미지를 만들기 위한 프롬프트 작성법</li>
+              <li>같은 아이디어를 다양한 스타일과 구도로 제작해보기</li>
+              <li>포스터, 광고 이미지, 캐릭터, 썸네일 등 비주얼 콘텐츠 제작 실습</li>
+              <li>다음 영상 제작을 위한 주제 및 간단한 스토리 기획</li>
+            </ul>
+            <div class="outcome">
+              <b>결과물 / 과제</b>
+              <p>이미지 제작 · 작품 및 영상 스토리 구상</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="session ai">
+          <div class="session-top">
+            <div class="round">7회<small>AI</small></div>
+            <div>
+              <h3>이미지를 움직이고 음악을 더해 영상 만들기</h3>
+              <div class="date">11월 25일(수) · 19:00~21:00</div>
+            </div>
+            <div class="type">AI 콘텐츠</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>짧은 영상의 기본 구조와 장면 구성 이해</li>
+              <li>영상 제작을 위한 스토리보드 및 장면 기획</li>
+              <li>AI를 활용한 이미지 → 영상 제작 실습</li>
+              <li>움직임, 카메라 구도, 분위기 등을 프롬프트로 표현하기</li>
+              <li>Suno를 활용한 배경음악 제작</li>
+              <li>영상에 어울리는 음악의 분위기와 스타일 설정하기</li>
+              <li>CapCut 등을 활용한 영상·음악 조합 및 기본 편집</li>
+            </ul>
+            <div class="outcome">
+              <b>결과물</b>
+              <p>영상 초안 + 배경음악</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="session ai">
+          <div class="session-top">
+            <div class="round">8회<small>AI</small></div>
+            <div>
+              <h3>나만의 AI 콘텐츠 완성 및 공유</h3>
+              <div class="date">12월 2일(수) · 19:00~21:00</div>
+            </div>
+            <div class="type">AI 콘텐츠</div>
+          </div>
+          <div class="session-body">
+            <ul>
+              <li>지난 시간에 제작한 이미지·영상·음악 정리</li>
+              <li>필요한 장면 추가 생성 및 수정</li>
+              <li>CapCut 등을 활용한 컷 편집, 자막, 음악, 효과음 적용</li>
+              <li>콘텐츠의 흐름과 완성도 점검</li>
+              <li>짧은 AI 영상 콘텐츠 최종 완성</li>
+              <li>결과물 공유 및 제작 과정 발표</li>
+            </ul>
+            <div class="outcome">
+              <b>최종 결과물</b>
+              <p>짧은 AI 영상 콘텐츠 1편</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="footer">샬롬자유학교 AI 교육 운영계획(안) · 김태양 · 박서현</div>
+  </main>
+</body>
+</html>

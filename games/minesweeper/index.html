@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미니게임 #1 - 지뢰찾기 (Minesweeper)</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- 상단 네비게이션 (허브 이동 및 미니게임 번호) -->
+  <header class="nav-bar">
+    <a href="../../index.html" class="nav-link">⬅ 미니게임 로비로 이동</a>
+    <span style="font-size: 13px; color: #a6e22e;">🎮 미니게임 #1</span>
+  </header>
+
+  <!-- 게임 메인 윈도우 -->
+  <main class="game-window">
+    <!-- 컨트롤 바 (난이도 선택 및 사운드 스위치) -->
+    <div class="controls-bar">
+      <select id="difficulty-select" class="difficulty-select">
+        <option value="beginner">초급 (9 × 9, 지뢰 10개)</option>
+        <option value="intermediate">중급 (16 × 16, 지뢰 40개)</option>
+        <option value="expert">고급 (30 × 16, 지뢰 99개)</option>
+      </select>
+      <button id="sound-btn" class="btn-icon" title="효과음 켜기/끄기">🔊</button>
+    </div>
+
+    <!-- 클래식 스타일 상태 헤더 (지뢰 카운터, 스마일 리셋, 타이머) -->
+    <div class="status-header">
+      <div id="mines-count" class="lcd-display">010</div>
+      <button id="face-btn" class="face-button" title="다시 시작">😊</button>
+      <div id="timer" class="lcd-display">000</div>
+    </div>
+
+    <!-- 지뢰 보드 영역 -->
+    <div class="board-container">
+      <div id="board" class="board-grid"></div>
+    </div>
+
+    <!-- 모바일 전용 토글 버튼 (열기 / 깃발) -->
+    <div class="mobile-toolbar">
+      <button id="mode-dig" class="btn-icon active">⛏️ 열기 모드</button>
+      <button id="mode-flag" class="btn-icon">🚩 깃발 모드</button>
+    </div>
+
+    <!-- 하단 부가 정보 -->
+    <footer class="footer-info">
+      <div>최고 기록: <strong id="best-time">-</strong></div>
+      <div style="font-size: 11px; color: #666;">숫자 더블클릭: 주변 자동 열기</div>
+    </footer>
+  </main>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
